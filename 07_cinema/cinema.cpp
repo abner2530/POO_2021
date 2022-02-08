@@ -41,20 +41,20 @@ class Sala {
     
 public:
     Sala(int capacit) : cadeiras(capacit, nullptr){}
-        
-    bool validaId(int indice) {
-        if (indice < 0 || indice >= (int) this->cadeiras.size()) {
-            cout << "cadeira invalida\n";
-            return false;
-        }
-        return true;
-    }
 
     bool validaClient(string id) {
         for (int i = 0; i < (int) this->cadeiras.size(); i++) {
             if(this->cadeiras[i] != nullptr && this->cadeiras[i]->getId() == id){
                 return false;
             }
+        }
+        return true;
+    }
+        
+    bool validaId(int indice) {
+        if (indice < 0 || indice >= (int) this->cadeiras.size()) {
+            cout << "cadeira invalida\n";
+            return false;
         }
         return true;
     }
@@ -92,6 +92,10 @@ public:
 
     } 
 
+    vector<shared_ptr<Client>> getCadeiras() {
+        return this->cadeiras;
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Sala& c) {
         for (int i = 0; i < (int) c.cadeiras.size(); i++) {
             auto& cadeira = c.cadeiras[i];
@@ -118,9 +122,9 @@ int main()
         } else if (cmd == "show") {
             cout << cinema << endl;
         }  else if (cmd == "cancelar") {
-            string indice{};
-            cin >> indice;
-            cinema.cancelar(indice);
+            string name{};
+            cin >> name;
+            cinema.cancelar(name);
         } else if(cmd == "reservar") {
             string fone{};
             string id{};
