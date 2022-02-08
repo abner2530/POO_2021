@@ -64,9 +64,9 @@ public:
         }
     }
 
-    void rmFone(int ind) {
-        if (isValid(ind)) {
-            fones.erase(next(fones.begin(), ind));
+    void rmFone(int index) {
+        if (isValid(index)) {
+            fones.erase(next(fones.begin(), index));
             cout << "Fone removido\n";
         }
     }
@@ -94,6 +94,22 @@ public:
         return true;
     }
 
+    std::list<Fone> getFones() {
+        return this->fones;
+    }
+
+    std::string getName() {
+        return this->name;
+    }
+
+    std::list<Fone> setFones() {
+        this->fones = fones;
+    }
+
+    void setName(std::string name) {
+        this->name = name;
+    }
+
 private:
     string name;
     list<Fone> fones;
@@ -119,9 +135,9 @@ int main() {
             ss >> id >> number;
             Agenda.addFone(Fone(id, number));
         } else if (cmd == "rm") {
-            int index{};
-            ss >> index;
-            Agenda.rmFone(index);
+            int idc{};
+            ss >> idc;
+            Agenda.rmFone(idc);
         }
     }
 }
