@@ -68,7 +68,7 @@ public:
         }
     }
 
-    bool papaiChegou(string name) {
+    bool remove_kid(string name) {
         for (auto kid : this->espera) {
             if(kid->getNome() == name){
                 this->espera.remove(kid);
@@ -122,10 +122,10 @@ int main()
             pula.entrar_brinqdo();
         } else if(cmd == "sair") {
             pula.sair_brinqdo();
-        } else if(cmd == "papai") {
+        } else if(cmd == "bye") {
             string name{};
             cin >> name;
-            pula.papaiChegou(name);
+            pula.remove_kid(name);
         }
     }
 }
